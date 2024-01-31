@@ -17,32 +17,20 @@ class Person {
 }
 
 class House {
-    private tenants: Person[];
-    protected door: boolean;
-    protected key: Key;
-    constructor(
-        door: boolean,
-        key: Key
-    ) { 
-        this.door = door;
-        this.key = key;
-    }
+    private tenants: Person[] = [];
+    protected door : boolean = false;
+    constructor(protected key: Key) { }
     
     public comeIn(tenant: Person): void {
         if (this.door) {
             this.tenants.push(tenant)
         }
     }
-    public openDoor(key: Key):void {
-        console.log(key.getSignature());
-    }
+    public openDoor(key: Key):void{} 
+    
 }
 
 class MyHouse extends House {
-
-    constructor(key: Key) { 
-        super(false, key)
-    }
 
     public openDoor(key: Key):void {
         if (this.key.getSignature() === key.getSignature()) {
